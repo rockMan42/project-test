@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.projecttest.common.ProductTypeUpgraded;
+import org.example.projecttest.common.UpgradedProjectStage;
 
 import java.util.Date;
 
@@ -19,6 +20,8 @@ public class Project {
     private ProductTypeUpgraded productTypeUpgraded;
 
     private Customer customer;
+
+    private Product product;
 
 
 }

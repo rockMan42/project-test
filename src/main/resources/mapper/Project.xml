@@ -3,15 +3,16 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.projecttest.repository.ProjectRepository">
     <!--查询分页信息-->
-    <!--嵌套查询一对一映射-->
     <resultMap id="projectAndCustomer" type="org.example.projecttest.entity.Project" autoMapping="true">
         <association property="customer" javaType="org.example.projecttest.entity.Customer" autoMapping="true"/>
+        <association property="product" javaType="org.example.projecttest.entity.Product" autoMapping="true"/>
     </resultMap>
     <select id="selectInfoByPage" resultMap="projectAndCustomer">
-        select prp.id,prp.product_type_upgraded,psc.create_time,psc.customer_name
+        select prp.id,pp.product_name,prp.product_type_upgraded,psc.customer_name,DATE_FORMAT(psc.create_time, '%Y-%m-%d %H:%i:%s') AS createTime
         from pr_reservoir_project prp
-        left join pr_super_customer psc ON prp.superCustomer_Id=psc.id
---         where prp.product_type_upgraded is not null
+        inner join pr_super_customer psc ON prp.superCustomer_Id=psc.id
+        inner join pr_product pp ON prp.product_id=pp.id
+        where prp.product_type = #{productType} AND prp.create_time BETWEEN #{startTime} AND #{endTime} AND  prp.upgradedProjectStage = #{upgradedProjectStage}
         Limit #{start},#{size}
     </select>
 
@@ -20,5 +21,6 @@
         select count(*)
         from pr_reservoir_project prp
         inner join pr_super_customer psc ON prp.superCustomer_Id=psc.id
+        inner join pr_product pp ON prp.product_id=pp.id
     </select>
 </mapper>

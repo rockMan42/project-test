@@ -8,6 +8,7 @@ import org.example.projecttest.service.ProjectService;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -23,6 +24,8 @@ public class ProjectController {
 
         params.setStart(start);
 
+        params.setStartTime(params.getStartTime()+" 00:00:00");
+        params.setEndTime(params.getEndTime()+" 23:59:59");
 //        PageUtils pageUtils = projectService.findByPage(params);
 //        return pageUtils;
         List byPage = projectService.findByPage(params);
