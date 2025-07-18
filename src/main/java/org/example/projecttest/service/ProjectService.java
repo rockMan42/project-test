@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProjectService {
 
-    List findByPage(Params params);
+    PageUtils findByPage(Params params);
 
 
 }

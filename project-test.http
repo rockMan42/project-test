@@ -1,3 +1,23 @@
+#无条件
+POST localhost:8080/projects
+Content-Type: application/json
+
+{
+  "page": 1,
+  "size": 30
+}
+
+###只有开始条件
+POST localhost:8080/projects
+Content-Type: application/json
+
+{
+  "page": 1,
+  "size": 30,
+  "startTime": "2021-05-26"
+}
+
+###查时间范围
 POST localhost:8080/projects
 Content-Type: application/json
 
@@ -5,7 +25,36 @@ Content-Type: application/json
   "page": 1,
   "size": 30,
   "startTime": "2021-05-26",
-  "endTime": "2021-05-29",
-  "productType": 2,
+  "endTime": "2021-05-29"
+}
+
+###只有结束时间
+POST localhost:8080/projects
+Content-Type: application/json
+
+{
+  "page": 1,
+  "size": 30,
+  "endTime": "2021-05-29"
+}
+
+###只有产品类型
+POST localhost:8080/projects
+Content-Type: application/json
+
+{
+  "page": 1,
+  "size": 30,
+  "productType": 0
+
+}
+
+###只有阶段
+POST localhost:8080/projects
+Content-Type: application/json
+
+{
+  "page": 1,
+  "size": 30,
   "upgradedProjectStage": "高度意向"
 }

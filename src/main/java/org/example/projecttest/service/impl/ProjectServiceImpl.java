@@ -18,7 +18,7 @@ public class ProjectServiceImpl implements ProjectService {
     @Autowired
     ProjectRepository projectRepository;
     @Override
-    public List<Project> findByPage(Params params) {
+    public PageUtils findByPage(Params params) {
         int count = projectRepository.selectCountByPage(params);
 
         List<Project> list = null;
@@ -27,7 +27,7 @@ public class ProjectServiceImpl implements ProjectService {
             list=projectRepository.selectInfoByPage(params);
         }
 
-//        return new PageUtils(list,count, params.getPage(), params.getSize());
-        return list;
+        return new PageUtils(list,count, params.getPage(), params.getSize());
+
     }
 }

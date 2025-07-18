@@ -8,11 +8,31 @@
         <association property="product" javaType="org.example.projecttest.entity.Product" autoMapping="true"/>
     </resultMap>
     <select id="selectInfoByPage" resultMap="projectAndCustomer">
-        select prp.id,pp.product_name,prp.product_type_upgraded,psc.customer_name,DATE_FORMAT(psc.create_time, '%Y-%m-%d %H:%i:%s') AS createTime
+        select prp.id,pp.product_name,prp.product_type_upgraded,psc.customer_name,DATE_FORMAT(prp.create_time, '%Y-%m-%d %H:%i:%s') AS createTime
         from pr_reservoir_project prp
         inner join pr_super_customer psc ON prp.superCustomer_Id=psc.id
         inner join pr_product pp ON prp.product_id=pp.id
-        where prp.product_type = #{productType} AND prp.create_time BETWEEN #{startTime} AND #{endTime} AND  prp.upgradedProjectStage = #{upgradedProjectStage}
+        WHERE 1=1
+            <if test="productType!=null">
+                AND prp.product_type = #{productType}
+            </if>
+
+            <if test="upgradedProjectStage!=null">
+                AND prp.upgradedProjectStage = #{upgradedProjectStage}
+            </if>
+
+            <choose>
+                <when test="(startTime!=null and startTime!='') and (endTime!=null and endTime!='')">
+                    AND prp.create_time BETWEEN #{startTime} AND #{endTime}
+                </when>
+                <when test="startTime!=null and startTime!=''">
+                    AND prp.create_time >= #{startTime}
+                </when>
+                <when test="endTime!=null and endTime!=''">
+                    AND prp.create_time &lt; #{endTime}
+                </when>
+            </choose>
+
         Limit #{start},#{size}
     </select>
 
@@ -22,5 +42,25 @@
         from pr_reservoir_project prp
         inner join pr_super_customer psc ON prp.superCustomer_Id=psc.id
         inner join pr_product pp ON prp.product_id=pp.id
+        WHERE 1=1
+        <if test="productType!=null">
+            AND prp.product_type = #{productType}
+        </if>
+
+        <if test="upgradedProjectStage!=null">
+            AND prp.upgradedProjectStage = #{upgradedProjectStage}
+        </if>
+
+        <choose>
+            <when test="(startTime!=null and startTime!='') and (endTime!=null and endTime!='')">
+                AND prp.create_time BETWEEN #{startTime} AND #{endTime}
+            </when>
+            <when test="startTime!=null and startTime!=''">
+                AND prp.create_time >= #{startTime}
+            </when>
+            <when test="endTime!=null and endTime!=''">
+                AND prp.create_time &lt; #{endTime}
+            </when>
+        </choose>
     </select>
 </mapper>

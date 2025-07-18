@@ -18,17 +18,20 @@ public class ProjectController {
     ProjectService projectService;
 
     @PostMapping("/projects")
-    public List getProjects(@RequestBody Params params) {
+    public PageUtils getProjects(@RequestBody Params params) {
 
         int start = (params.getPage()- 1) * params.getSize();
 
         params.setStart(start);
 
-        params.setStartTime(params.getStartTime()+" 00:00:00");
-        params.setEndTime(params.getEndTime()+" 23:59:59");
-//        PageUtils pageUtils = projectService.findByPage(params);
-//        return pageUtils;
-        List byPage = projectService.findByPage(params);
-        return byPage;
+        if (params.getStartTime()!=null) {
+            params.setStartTime(params.getStartTime()+" 00:00:00");
+        }
+        if (params.getEndTime()!=null) {
+            params.setEndTime(params.getEndTime()+" 23:59:59");
+        }
+        PageUtils pageUtils = projectService.findByPage(params);
+        return pageUtils;
+
     }
 }
