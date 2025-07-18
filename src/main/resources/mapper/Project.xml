@@ -8,7 +8,7 @@
         <association property="product" javaType="org.example.projecttest.entity.Product" autoMapping="true"/>
     </resultMap>
     <select id="selectInfoByPage" resultMap="projectAndCustomer">
-        select prp.id,pp.product_name,prp.product_type_upgraded,psc.customer_name,DATE_FORMAT(psc.create_time, '%Y-%m-%d %H:%i:%s') AS createTime
+        select prp.id,pp.product_name,prp.product_type_upgraded,psc.customer_name,DATE_FORMAT(prp.create_time, '%Y-%m-%d %H:%i:%s') AS createTime
         from pr_reservoir_project prp
         inner join pr_super_customer psc ON prp.superCustomer_Id=psc.id
         inner join pr_product pp ON prp.product_id=pp.id

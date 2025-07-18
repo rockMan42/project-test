@@ -11,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Customer {
 
-    private String createTime;
+
 
     private String customerName;
 }
