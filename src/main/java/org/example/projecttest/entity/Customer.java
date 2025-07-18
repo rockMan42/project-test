@@ -1,24 +1,17 @@
 package org.example.projecttest.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.projecttest.common.ProductTypeUpgraded;
 
 import java.util.Date;
-
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Project {
+public class Customer {
 
-    private int id;
+    private Date createTime;
 
-    private ProductTypeUpgraded productTypeUpgraded;
-
-    private Customer customer;
-
-
+    private String customerName;
 }

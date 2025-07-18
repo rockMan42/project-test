@@ -7,7 +7,7 @@ public class Params {
 
     int start;
 
-    int Page;
+    int page;
 
     int size;
 

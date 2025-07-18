@@ -2,11 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.projecttest.repository.ProjectRepository">
-    <select id="selectInfoByPage" resultType="org.example.projecttest.entity.Project">
-        select id,product_type,create_time from pr_reservoir_project Limit #{start},#{size}
+    <!--查询分页信息-->
+    <!--嵌套查询一对一映射-->
+    <resultMap id="projectAndCustomer" type="org.example.projecttest.entity.Project" autoMapping="true">
+        <association property="customer" javaType="org.example.projecttest.entity.Customer" autoMapping="true"/>
+    </resultMap>
+    <select id="selectInfoByPage" resultMap="projectAndCustomer">
+        select prp.id,prp.product_type_upgraded,psc.create_time,psc.customer_name
+        from pr_reservoir_project prp
+        left join pr_super_customer psc ON prp.superCustomer_Id=psc.id
+--         where prp.product_type_upgraded is not null
+        Limit #{start},#{size}
     </select>
 
+    <!--查询分页条数-->
     <select id="selectCountByPage" resultType="int">
-        select count(*) from pr_reservoir_project
+        select count(*)
+        from pr_reservoir_project prp
+        inner join pr_super_customer psc ON prp.superCustomer_Id=psc.id
     </select>
 </mapper>
