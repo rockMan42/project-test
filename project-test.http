@@ -1,4 +1,4 @@
-#无条件
+###无条件
 POST localhost:8080/projects
 Content-Type: application/json
 
@@ -45,7 +45,7 @@ Content-Type: application/json
 {
   "page": 1,
   "size": 30,
-  "productType": 0
+  "productType": 2
 
 }
 

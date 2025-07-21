@@ -18,7 +18,6 @@ public class Params {
 
     private String startTime;
 
-
     private String endTime;
 
     private Integer productType;

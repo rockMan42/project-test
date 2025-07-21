@@ -19,6 +19,8 @@ public class Project {
 
     private ProductTypeUpgraded productTypeUpgraded;
 
+    private String createTime;
+
     private Customer customer;
 
     private Product product;

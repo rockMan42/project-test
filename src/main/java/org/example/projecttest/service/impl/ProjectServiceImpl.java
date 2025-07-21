@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.projecttest.common.PageUtils;
 import org.example.projecttest.entity.Params;
 import org.example.projecttest.entity.Project;
+import org.example.projecttest.entity.Statistics;
 import org.example.projecttest.repository.ProjectRepository;
 import org.example.projecttest.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,14 @@ public class ProjectServiceImpl implements ProjectService {
 
         List<Project> list = null;
 
+        Statistics statistics = null;
+
         if (count!=0) {
             list=projectRepository.selectInfoByPage(params);
+            statistics = projectRepository.statisticsDeliveriesAndReserves(params);
         }
 
-        return new PageUtils(list,count, params.getPage(), params.getSize());
+        return new PageUtils(list,count, params.getPage(), params.getSize(),statistics);
 
     }
 }
