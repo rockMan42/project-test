@@ -3,7 +3,7 @@ POST localhost:8080/projects
 Content-Type: application/json
 
 {
-  "page": 1,
+  "page": 9,
   "size": 30
 }
 
@@ -35,7 +35,7 @@ Content-Type: application/json
 {
   "page": 1,
   "size": 30,
-  "endTime": "2021-05-29"
+  "endTime": "2025-05-29"
 }
 
 ###只有产品类型
@@ -58,3 +58,9 @@ Content-Type: application/json
   "size": 30,
   "upgradedProjectStage": "高度意向"
 }
+
+
+
+###
+POST localhost:8080/projects/findbyUpgradedStage?upgradedProjectStage=高度意向
+Content-Type: application/json
