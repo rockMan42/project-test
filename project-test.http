@@ -14,7 +14,7 @@ Content-Type: application/json
 {
   "page": 1,
   "size": 30,
-  "startTime": "2021-05-26"
+  "startTime": "2021-05-26 00:00:00"
 }
 
 ###查时间范围
@@ -23,9 +23,9 @@ Content-Type: application/json
 
 {
   "page": 1,
-  "size": 30,
-  "startTime": "2021-05-26",
-  "endTime": "2021-05-29"
+  "size": 10,
+  "startTime": "2021-05-26 00:00:00",
+  "endTime": "2022-05-29 00:00:00"
 }
 
 ###只有结束时间
@@ -35,7 +35,7 @@ Content-Type: application/json
 {
   "page": 1,
   "size": 30,
-  "endTime": "2025-05-29"
+  "endTime": "2022-05-29 00:00:00"
 }
 
 ###只有产品类型
@@ -59,8 +59,42 @@ Content-Type: application/json
   "upgradedProjectStage": "高度意向"
 }
 
-
-
-###
-POST localhost:8080/projects/findbyUpgradedStage?upgradedProjectStage=高度意向
+###多条件
+POST localhost:8080/projects
 Content-Type: application/json
+
+{
+  "page": 1,
+  "size": 10,
+  "startTime": "2021-05-26 00:00:00",
+  "endTime": "2022-05-29 00:00:00",
+  "upgradedProjectStage": "高度意向",
+  "productType": 2
+
+}
+
+
+###求和
+POST localhost:8080/sum
+Content-Type: application/json
+
+{
+  "page": 1,
+  "size": 10,
+  "startTime": "2021-05-26 00:00:00",
+  "endTime": "2022-05-29 00:00:00"
+
+}
+
+###求和
+POST localhost:8080/sum
+Content-Type: application/json
+
+{
+  "page": 1,
+  "size": 2,
+  "startTime": "2021-05-26 00:00:00",
+  "endTime": "2022-05-29 00:00:00",
+  "productType": 2,
+  "upgradedProjectStage": "高度意向"
+}

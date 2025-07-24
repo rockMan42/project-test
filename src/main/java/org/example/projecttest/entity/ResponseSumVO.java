@@ -4,14 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Statistics {
+public class ResponseSumVO {
 
-    private BigDecimal reservoirRate;
+    List<ResponseVO> list;
+    private Statistics statistics;
 
-    private BigDecimal agreementRate;
 }

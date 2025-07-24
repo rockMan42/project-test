@@ -24,6 +24,8 @@ public class Params {
 
     private String endTime;
 
-    private String productType;
+    private Integer productType;
+
+
 
 }

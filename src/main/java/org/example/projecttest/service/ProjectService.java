@@ -4,6 +4,8 @@ import org.example.projecttest.common.PageUtils;
 import org.example.projecttest.common.UpgradedProjectStage;
 import org.example.projecttest.entity.Params;
 import org.example.projecttest.entity.ReservoirProject;
+import org.example.projecttest.entity.ResponseSumVO;
+import org.example.projecttest.entity.ResponseVO;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -14,8 +16,10 @@ public interface ProjectService {
 //    PageUtils findByPage(Params params);
 
 
-    List findAll(Params  params);
+    List<ResponseVO> findAll(Params  params);
 
-    List<ReservoirProject> findByUpgradedProjectStage(UpgradedProjectStage upgradedProjectStage);
+    ResponseSumVO getTotalSum(Params params);
+
+//    List<ReservoirProject> findByUpgradedProjectStage(UpgradedProjectStage upgradedProjectStage);
 
 }
