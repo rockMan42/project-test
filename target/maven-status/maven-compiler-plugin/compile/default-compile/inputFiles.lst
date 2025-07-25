@@ -1,0 +1,15 @@
+/Users/zhao/Documents/project-test/src/main/java/org/example/projecttest/ProjectTestApplication.java
+/Users/zhao/Documents/project-test/src/main/java/org/example/projecttest/common/PageUtils.java
+/Users/zhao/Documents/project-test/src/main/java/org/example/projecttest/common/ProductTypeUpgraded.java
+/Users/zhao/Documents/project-test/src/main/java/org/example/projecttest/common/UpgradedProjectStage.java
+/Users/zhao/Documents/project-test/src/main/java/org/example/projecttest/controller/ProjectController.java
+/Users/zhao/Documents/project-test/src/main/java/org/example/projecttest/entity/Params.java
+/Users/zhao/Documents/project-test/src/main/java/org/example/projecttest/entity/Product.java
+/Users/zhao/Documents/project-test/src/main/java/org/example/projecttest/entity/ReservoirProject.java
+/Users/zhao/Documents/project-test/src/main/java/org/example/projecttest/entity/ResponseSumVO.java
+/Users/zhao/Documents/project-test/src/main/java/org/example/projecttest/entity/ResponseVO.java
+/Users/zhao/Documents/project-test/src/main/java/org/example/projecttest/entity/Statistics.java
+/Users/zhao/Documents/project-test/src/main/java/org/example/projecttest/entity/SuperCustomer.java
+/Users/zhao/Documents/project-test/src/main/java/org/example/projecttest/repository/ProjectRepository.java
+/Users/zhao/Documents/project-test/src/main/java/org/example/projecttest/service/ProjectService.java
+/Users/zhao/Documents/project-test/src/main/java/org/example/projecttest/service/impl/ProjectServiceImpl.java
